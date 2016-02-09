@@ -3,6 +3,10 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
+
+gem 'bootstrap-sass', '2.3.2.0'
+gem 'bcrypt-ruby', '3.0.1'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -35,6 +39,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  
+  gem 'rspec-rails', '2.13.1'
 end
 
 group :development do
@@ -45,3 +51,9 @@ group :development do
   gem 'spring'
 end
 
+group :test do
+  gem 'zip'
+  gem 'test-unit'
+  gem 'selenium-webdriver', '2.0.0'
+  gem 'capybara', '2.1.0'
+end

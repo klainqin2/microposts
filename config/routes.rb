@@ -1,11 +1,27 @@
 Rails.application.routes.draw do
+  #get 'main_pages/home'
+
+  #get 'main_pages/help'
+  
+  #get 'main_pages/about'
+  
+  #get 'main_pages/contact'
+  
+  get "users/new"
+
   resources :microposts
-  resources :users
+  #resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root to: 'main_pages#home'
+  
+  match '/signup',  to: 'users#new',            via: 'get'
+  match '/home',    to: 'main_pages#home',      via: 'get'
+  match '/help',    to: 'main_pages#help',      via: 'get'
+  match '/about',   to: 'main_pages#about',     via: 'get'
+  match '/contact', to: 'main_pages#contact',   via: 'get'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
