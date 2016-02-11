@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   
   #get 'main_pages/contact'
   
-  get "users/new"
+  #get "users/new"
 
   resources :microposts
-  #resources :users
+  resources :users
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
