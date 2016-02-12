@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :microposts
   resources :users
+  resources :sessions, only: [:new, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -19,6 +20,9 @@ Rails.application.routes.draw do
   root to: 'main_pages#home'
   
   match '/signup',  to: 'users#new',            via: 'get'
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
+
   match '/home',    to: 'main_pages#home',      via: 'get'
   match '/help',    to: 'main_pages#help',      via: 'get'
   match '/about',   to: 'main_pages#about',     via: 'get'
