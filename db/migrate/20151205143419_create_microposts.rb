@@ -5,6 +5,8 @@ class CreateMicroposts < ActiveRecord::Migration
       t.integer :user_id
 
       t.timestamps null: false
+      
+      add_index :microposts, [:user_id, :created_at]
     end
   end
 end

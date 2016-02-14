@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   # GET /users/new
@@ -27,6 +28,10 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    if signed_in? 
+      redirect_to root_path
+      return
+    end
     @user = User.new(user_params)
 
     respond_to do |format|
@@ -77,13 +82,6 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    end
-
-    def signed_in_user
-      unless signed_in?
-      	store_location
-      	redirect_to signin_url, notice: "please sign in."
-      end
     end
 
     def correct_user
